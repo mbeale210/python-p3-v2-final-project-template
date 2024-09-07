@@ -9,3 +9,44 @@ class Planet(Base):
         self.climate = climate
         self.terrain = terrain
         self.population = population
+
+    @classmethod
+    def create_table(cls):
+        sql = """
+            CREATE TABLE IF NOT EXISTS planets (
+                id INTEGER PRIMARY KEY,
+                name TEXT,
+                climate TEXT,
+                terrain TEXT,
+                population INTEGER
+            )
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    def save(self):
+        sql = """
+            INSERT INTO planets (name, climate, terrain, population)
+            VALUES (?, ?, ?, ?)
+        """
+        CURSOR.execute(sql, (self.name, self.climate, self.terrain, self.population))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
+
+     @classmethod
+    def get_all(cls):
+        sql = "SELECT * FROM planets"
+        CURSOR.execute(sql)
+        return [cls(*row) for row in CURSOR.fetchall()]
+    
+    @classmethod
+    def find_by_id(cls, id):
+        sql = "SELECT * FROM planets WHERE id = ?"
+        CURSOR.execute(sql, (id,))
+        row = CURSOR.fetchone()
+        return cls(*row) if row else None
+    
+    def delete(self):
+        sql = "DELETE FROM planets WHERE id = ?"
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
