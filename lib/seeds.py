@@ -1,7 +1,8 @@
 import random
+
 from faker import Faker
-from models.character import Character
-from models.planet import Planet
+from models.characters import Character
+from models.planets import Planet
 
 if __name__ == "__main__":
     print("Resetting tables...")
@@ -22,4 +23,3 @@ if __name__ == "__main__":
         "Mon Calamari", "Ewok", "Sullustan", "Zabrak", "Trandoshan", "Droid"
     ]
 
-    
