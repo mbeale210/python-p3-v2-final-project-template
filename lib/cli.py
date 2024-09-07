@@ -2,7 +2,10 @@
 
 from helpers import (
     exit_program,
-    helper_1
+    display_all_characters,
+    add_delete_character,
+    display_planet_details,
+    move_character
 )
 
 
@@ -13,7 +16,13 @@ def main():
         if choice == "0":
             exit_program()
         elif choice == "1":
-            helper_1()
+            display_all_characters()
+        elif choice == "2":
+            add_delete_character()
+        elif choice == "3":
+            display_planet_details()
+        elif choice == "4":
+            move_character()
         else:
             print("Invalid choice")
 
@@ -21,8 +30,10 @@ def main():
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
-    print("1. Some useful function")
-
+    print("1. Display all characters")
+    print("2. Add/Delete character")
+    print("3. Display planet details")
+    print("4. Move character to a different planet")
 
 if __name__ == "__main__":
     main()
