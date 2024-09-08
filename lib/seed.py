@@ -37,7 +37,7 @@ if __name__ == "__main__":
         print(f"Created planet: {planet.name} with ID: {planet.id}")
 
     print("Creating characters...")
-    for _ in range(50):
+    for _ in range(12):
         planet = random.choice(planet_objects)
         character = Character(
             name=fake.name(),

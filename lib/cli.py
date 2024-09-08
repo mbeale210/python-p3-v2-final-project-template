@@ -19,7 +19,7 @@ def main():
         elif choice == "3":
             exit_program()
         else:
-            print("Invalid choice")
+            print("Invalid choice. I find your lack of faith disturbing.")
 
 def main_menu():
     print("\nMain Menu:")
@@ -32,7 +32,7 @@ def characters_menu():
         display_all_characters()
         print("\nCharacters Menu:")
         print("1. Planet details")
-        print("2. Move a character")
+        print("2. Move a hero")
         print("3. Main menu")
         choice = input("> ")
         if choice == "1":
@@ -44,7 +44,7 @@ def characters_menu():
         elif choice == "3":
             break
         else:
-            print("Invalid choice")
+            print("Invalid choice. I find your lack of faith disturbing.")
 
 if __name__ == "__main__":
     main()
