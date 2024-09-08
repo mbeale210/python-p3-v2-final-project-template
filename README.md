@@ -73,6 +73,11 @@ Add a vehicle model that will allow many to many relationships
 Feel free to contribute to this project by submitting pull requests or reporting issues!
 May the Force be with you!
 
+ASCII art thanks to:
+https://www.asciiart.eu/movies/star-wars
+https://asciiart.website/index.php?art=movies/star%20wars
+
+
 <!-- # Phase 3 CLI+ORM Project Template
 
 ## Learning Goals
