@@ -81,7 +81,35 @@ def add_delete_character():
         else:
             print("It seems the Hero you are looking for does not exist.")
     else:
-        print("Invalid choice. I find your lack of faith disturbing")
+        print("""
+                       .-.
+                      |_:_|
+                     /(_Y_)\.
+.                   ( \/M\/ )      I find your lack of faith disturbing.
+ '.               _.'-/'-'\-'._
+   ':           _/.--'[[[[]'--.\_
+     ':        /_'  : |::"| :  '.\.
+       ':     //   ./ |oUU| \.'  :\.
+         ':  _:'..' \_|___|_/ :   :|
+           ':.  .'  |_[___]_|  :.':\.
+            [::\ |  :  | |  :   ; : \.
+             '-'   \/'.| |.' \  .;.' |
+             |\_    \  '-'   :       |
+             |  \    \ .:    :   |   |
+             |   \    | '.   :    \  |
+             /       \   :. .;       |
+            /     |   |  :__/     :   \.
+           |  |   |    \:   | \   |   ||
+          /    \  : :  |:   /  |__|   /|
+          |     : : :_/_|  /'._\  '--|_\.
+          /___.-/_|-'   \  \.
+                         '-'
+                  
+                  Invalid choice. 
+
+                  Art by Shanaka Dias
+                  """)
+
 
 def display_planet_details():
     display_all_planets()

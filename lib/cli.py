@@ -11,44 +11,7 @@ from helpers import (
 
 def main():
     while True:
-        main_menu()
-        choice = input("> ")
-        if choice == "1":
-            characters_menu()
-        elif choice == "2":
-            add_delete_character()
-        elif choice == "3":
-            exit_program()
-        else:
-            print("""
-                  Art by Shanaka Dias
-                       .-.
-                      |_:_|
-                     /(_Y_)\.
-.                   ( \/M\/ )
- '.               _.'-/'-'\-'._
-   ':           _/.--'[[[[]'--.\_
-     ':        /_'  : |::"| :  '.\.
-       ':     //   ./ |oUU| \.'  :\.
-         ':  _:'..' \_|___|_/ :   :|
-           ':.  .'  |_[___]_|  :.':\.
-            [::\ |  :  | |  :   ; : \.
-             '-'   \/'.| |.' \  .;.' |
-             |\_    \  '-'   :       |
-             |  \    \ .:    :   |   |
-             |   \    | '.   :    \  |
-             /       \   :. .;       |
-            /     |   |  :__/     :   \.
-           |  |   |    \:   | \   |   ||
-          /    \  : :  |:   /  |__|   /|
-          |     : : :_/_|  /'._\  '--|_\.
-          /___.-/_|-'   \  \.
-                         '-'
-                  Invalid choice. I find your lack of faith disturbing.
-                  """)
-
-def main_menu():
-    print("""
+        print("""
       _                                      
           ________________.  ___     .______
          /                | /   \    |   _  \.
@@ -78,7 +41,47 @@ def main_menu():
     |_|  |_|\____/   \/   |______|_|  \________|.
 
 
-          \nMain Menu:""")
+        """)
+        main_menu()
+        choice = input("> ")
+        if choice == "1":
+            characters_menu()
+        elif choice == "2":
+            add_delete_character()
+        elif choice == "3":
+            exit_program()
+        else:
+            print("""
+                       .-.
+                      |_:_|
+                     /(_Y_)\.
+.                   ( \/M\/ )      I find your lack of faith disturbing.
+ '.               _.'-/'-'\-'._
+   ':           _/.--'[[[[]'--.\_
+     ':        /_'  : |::"| :  '.\.
+       ':     //   ./ |oUU| \.'  :\.
+         ':  _:'..' \_|___|_/ :   :|
+           ':.  .'  |_[___]_|  :.':\.
+            [::\ |  :  | |  :   ; : \.
+             '-'   \/'.| |.' \  .;.' |
+             |\_    \  '-'   :       |
+             |  \    \ .:    :   |   |
+             |   \    | '.   :    \  |
+             /       \   :. .;       |
+            /     |   |  :__/     :   \.
+           |  |   |    \:   | \   |   ||
+          /    \  : :  |:   /  |__|   /|
+          |     : : :_/_|  /'._\  '--|_\.
+          /___.-/_|-'   \  \.
+                         '-'
+                  
+                  Invalid choice. 
+
+                  Art by Shanaka Dias
+                  """)
+
+def main_menu():
+    print("\nMain Menu:")
     print("1. Let's find some Heroes")
     print("2. Add/Delete Hero")
     print("3. Exit program")
@@ -93,7 +96,6 @@ def characters_menu():
         choice = input("> ")
         if choice == "1":
             display_planet_details()
-            break
         elif choice == "2":
             move_character()
             break
