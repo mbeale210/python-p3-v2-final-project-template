@@ -85,3 +85,4 @@ def display_all_planets():
     print("\nAll Planets:")
     for planet in planets:
         print(f"{planet.id}. {planet.name}")
+
