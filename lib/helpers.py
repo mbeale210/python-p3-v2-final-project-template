@@ -71,5 +71,24 @@ def display_planet_details():
         print("It does not exist.")
 
 def move_character():
-    print()
+    characters = Character.get_all()
+    for character in characters:
+        planet = Planet.find_by_id(character.planet_id)
+        print(f"{character.id}. {character.name} - Current planet: {planet.name}")
+    character_id = int(input("Enter character ID to move: "))
+    character = Character.find_by_id(character_id)
+    if character:
+        planets = Planet.get_all()
+        print("Available planets:")
+        for planet in planets:
+            print(f"{planet.id}. {planet.name}")
+        new_planet_id = int(input("Enter new planet ID: "))
+        character.planet_id = new_planet_id
+        character.save()
+        print("Jump to Light speed successful!")
+    else:
+        print("I hate to say it but the hero you're looking for")
+        print(" doesn't seem to exist on this planet.")
+        print("If an item doesn't appear in our records,")
+        print("It does not exist.")       
 
