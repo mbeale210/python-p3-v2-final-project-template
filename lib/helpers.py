@@ -12,7 +12,7 @@ def display_all_characters():
     for character in characters:
         planet = Planet.find_by_id(character.planet_id)
         planet_name = planet.name if planet else "Unknown"
-        print(f"{character.name} - Species: {character.species}, Planet: {planet_name}")
+        print(f"{character.id}. {character.name} - Species: {character.species}, Planet: {planet_name}")
 
 def add_delete_character():
     print("\n1. Add Character")
@@ -46,10 +46,8 @@ def add_delete_character():
         print("Invalid choice.")
 
 def display_planet_details():
-    planets = Planet.get_all()
-    for planet in planets:
-        print(f"{planet.id}. {planet.name}")
-    planet_id = int(input("Enter planet ID: "))
+    display_all_planets()
+    planet_id = int(input("Enter planet ID to learn more about: "))
     planet = Planet.find_by_id(planet_id)
     if planet:
         print(f"\nPlanet: {planet.name}")
@@ -83,3 +81,9 @@ def move_character():
         print("Character moved successfully!")
     else:
         print("Character not found.")
+
+def display_all_planets():
+    planets = Planet.get_all()
+    print("\nAll Planets:")
+    for planet in planets:
+        print(f"{planet.id}. {planet.name}")

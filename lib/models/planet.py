@@ -11,6 +11,15 @@ class Planet(Base):
         self.population = population
 
     @classmethod
+    def find_by_id(cls, id):
+        sql = "SELECT * FROM planets WHERE id = ?"
+        CURSOR.execute(sql, (id,))
+        row = CURSOR.fetchone()
+        if row:
+            return cls(*row)
+        return None
+
+    @classmethod
     def create_table(cls):
         sql = """
             CREATE TABLE IF NOT EXISTS planets (

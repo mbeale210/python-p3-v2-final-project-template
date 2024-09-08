@@ -10,28 +10,39 @@ from helpers import (
 
 def main():
     while True:
-        menu()
+        main_menu()
         choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            display_all_characters()
+        if choice == "1":
+            characters_menu()
         elif choice == "2":
             add_delete_character()
         elif choice == "3":
-            display_planet_details()
-        elif choice == "4":
-            move_character()
+            exit_program()
         else:
             print("Invalid choice")
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
+def main_menu():
+    print("\nMain Menu:")
     print("1. Display all characters")
     print("2. Add/Delete character")
-    print("3. Display planet details")
-    print("4. Move character to a different planet")
+    print("3. Exit program")
+
+def characters_menu():
+    while True:
+        display_all_characters()
+        print("\nCharacters Menu:")
+        print("1. Planet details")
+        print("2. Move a character")
+        print("3. Main menu")
+        choice = input("> ")
+        if choice == "1":
+            display_planet_details()
+        elif choice == "2":
+            move_character()
+        elif choice == "3":
+            break
+        else:
+            print("Invalid choice")
 
 if __name__ == "__main__":
     main()

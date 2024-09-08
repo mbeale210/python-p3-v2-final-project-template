@@ -1,4 +1,4 @@
-from .base import Base, CURSOR, CONN
+from .base import Base, CONN, CURSOR
 
 class Character(Base):
     table_name = "characters"
@@ -9,6 +9,42 @@ class Character(Base):
         self.species = species
         self.birth_year = birth_year
         self.planet_id = planet_id
+
+    @classmethod
+    def get_all(cls):
+        sql = "SELECT * FROM characters ORDER BY id"
+        CURSOR.execute(sql)
+        return [cls(row[1], row[2], row[3], row[4], row[0]) for row in CURSOR.fetchall()]
+
+    @classmethod
+    def find_by_id(cls, id):
+        sql = "SELECT * FROM characters WHERE id = ?"
+        CURSOR.execute(sql, (id,))
+        row = CURSOR.fetchone()
+        return cls(row[1], row[2], row[3], row[4], row[0]) if row else None
+
+    def save(self):
+        if self.id is None:
+            sql = """
+                INSERT INTO characters (name, species, birth_year, planet_id)
+                VALUES (?, ?, ?, ?)
+            """
+            CURSOR.execute(sql, (self.name, self.species, self.birth_year, self.planet_id))
+            CONN.commit()
+            self.id = CURSOR.lastrowid
+        else:
+            sql = """
+                UPDATE characters
+                SET name = ?, species = ?, birth_year = ?, planet_id = ?
+                WHERE id = ?
+            """
+            CURSOR.execute(sql, (self.name, self.species, self.birth_year, self.planet_id, self.id))
+            CONN.commit()
+
+    def delete(self):
+        sql = "DELETE FROM characters WHERE id = ?"
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
 
     @classmethod
     def create_table(cls):
@@ -23,31 +59,4 @@ class Character(Base):
             )
         """
         CURSOR.execute(sql)
-        CONN.commit()
-
-    def save(self):
-        sql = """
-            INSERT INTO characters (name, species, birth_year, planet_id)
-            VALUES (?, ?, ?, ?)
-        """
-        CURSOR.execute(sql, (self.name, self.species, self.birth_year, self.planet_id))
-        CONN.commit()
-        self.id = CURSOR.lastrowid
-
-    @classmethod
-    def get_all(cls):
-        sql = "SELECT * FROM characters"
-        CURSOR.execute(sql)
-        return [cls(*row) for row in CURSOR.fetchall()]
-
-    @classmethod
-    def find_by_id(cls, id):
-        sql = "SELECT * FROM characters WHERE id = ?"
-        CURSOR.execute(sql, (id,))
-        row = CURSOR.fetchone()
-        return cls(*row) if row else None
-
-    def delete(self):
-        sql = "DELETE FROM characters WHERE id = ?"
-        CURSOR.execute(sql, (self.id,))
         CONN.commit()

@@ -33,15 +33,18 @@ if __name__ == "__main__":
         )
         planet.save()
         planet_objects.append(planet)
+        print(f"Created planet: {planet.name} with ID: {planet.id}")
 
     print("Creating characters...")
     for _ in range(50):
+        planet = random.choice(planet_objects)
         character = Character(
             name=fake.name(),
             species=random.choice(species),
             birth_year=f"{random.choice(['BBY', 'ABY'])} {random.randint(1, 1000)}",
-            planet_id=random.choice(planet_objects).id
+            planet_id=planet.id
         )
         character.save()
+        print(f"Created character: {character.name} assigned to planet: {planet.name} (ID: {planet.id})")
 
     print("Seeding complete!")
