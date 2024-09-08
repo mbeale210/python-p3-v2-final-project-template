@@ -39,9 +39,9 @@ def add_delete_character():
             character.delete()
             print("Your Hero has become one with the force!")
         else:
-            print("Character not found.")
+            print("It seems the Hero you are looking for does not exist.")
     else:
-        print("Invalid choice.")
+        print("Invalid choice. I find your lack of faith disturbing")
 
 def display_planet_details():
     display_all_planets()
@@ -58,7 +58,7 @@ def display_planet_details():
         for character in planet_characters:
             print(f"- {character.name} ({character.species})")
     else:
-        print("Planet not found.")
+        print("It seems the system you are looking for does not exist.")
 
 def move_character():
     characters = Character.get_all()
@@ -78,7 +78,7 @@ def move_character():
         character.save()
         print("Your Hero has made the jump to light speed!")
     else:
-        print("Character not found.")
+        print("It seems the Hero you are looking for does not exist.")
 
 def display_all_planets():
     planets = Planet.get_all()
