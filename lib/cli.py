@@ -37,8 +37,10 @@ def characters_menu():
         choice = input("> ")
         if choice == "1":
             display_planet_details()
+            break
         elif choice == "2":
             move_character()
+            break
         elif choice == "3":
             break
         else:
