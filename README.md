@@ -7,6 +7,23 @@ Add/Delete characters
 View planet details
 Move characters between planets
 
+ERD:
+PLANET ||--o{ CHARACTER: “has many”
+PLANET {
+int id PK
+string name
+string climate
+string terrain
+int population
+}
+CHARACTER {
+int id PK
+string name
+string species
+string birth_year
+int panet_id FK
+{
+
 File Structure
 lib/cli.py
 This is the main entry point of the application. It contains the following key functions:
@@ -55,24 +72,6 @@ Add a vehicle model that will allow many to many relationships
 
 Feel free to contribute to this project by submitting pull requests or reporting issues!
 May the Force be with you!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!-- # Phase 3 CLI+ORM Project Template
 
