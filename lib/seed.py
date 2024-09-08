@@ -19,7 +19,7 @@ if __name__ == "__main__":
 
     species = [
         "Human", "Wookiee", "Twi'lek", "Rodian", "Hutt", "Gungan", "Togruta",
-        "Mon Calamari", "Ewok", "Sullustan", "Zabrak", "Trandoshan", "Droid"
+        "Mon Calamari", "Ewok", "Sullustan", "Zabrak", "Trandoshan", "Droid", "Mandalorian"
     ]
 
     print("Creating planets...")
