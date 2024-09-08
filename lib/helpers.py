@@ -18,9 +18,9 @@ def add_delete_character():
     choice = input("Enter your choice: ")
 
     if choice == "1":
-        name = input("Enter character name: ")
-        species = input("Enter character species: ")
-        birth_year = input("Enter character birth year: ")
+        name = input("Enter hero name: ")
+        species = input("Enter hero species: ")
+        birth_year = input("Enter hero birth year. please start with BBY or ABY: ")
         planets = Planet.get_all()
         print("Available planets:")
         for planet in planets:
@@ -28,7 +28,7 @@ def add_delete_character():
         planet_id = int(input("Enter planet ID: "))
         character = Character(name, species, birth_year, planet_id)
         character.save()
-        print("Character added successfully!")
+        print("Your Hero is ready to travel the galaxy!")
     elif choice == "2":
         characters = Character.get_all()
         for character in characters:
@@ -37,7 +37,7 @@ def add_delete_character():
         character = Character.find_by_id(character_id)
         if character:
             character.delete()
-            print("Character deleted successfully!")
+            print("Your Hero has become one with the force!")
         else:
             print("Character not found.")
     else:
@@ -45,7 +45,7 @@ def add_delete_character():
 
 def display_planet_details():
     display_all_planets()
-    planet_id = int(input("Enter planet ID to learn more about: "))
+    planet_id = int(input("Would you like to learn more? Enter planet ID: "))
     planet = Planet.find_by_id(planet_id)
     if planet:
         print(f"\nPlanet: {planet.name}")
@@ -76,7 +76,7 @@ def move_character():
         new_planet_id = int(input("Enter new planet ID: "))
         character.planet_id = new_planet_id
         character.save()
-        print("Character moved successfully!")
+        print("Your Hero has made the jump to light speed!")
     else:
         print("Character not found.")
 
