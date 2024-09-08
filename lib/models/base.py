@@ -1,7 +1,4 @@
-import sqlite3
-
-CONN = sqlite3.connect('star_wars.db')
-CURSOR = CONN.cursor()
+from . import CONN, CURSOR
 
 class Base:
     table_name = ""

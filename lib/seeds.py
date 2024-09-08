@@ -1,8 +1,6 @@
 import random
-
 from faker import Faker
-from models.characters import Character
-from models.planets import Planet
+from models import Character, Planet
 
 if __name__ == "__main__":
     print("Resetting tables...")
@@ -23,3 +21,26 @@ if __name__ == "__main__":
         "Mon Calamari", "Ewok", "Sullustan", "Zabrak", "Trandoshan", "Droid"
     ]
 
+    print("Creating planets...")
+    planet_objects = []
+    for planet_name in planets:
+        planet = Planet(
+            name=planet_name,
+            climate=fake.word(),
+            terrain=fake.word(),
+            population=random.randint(1000, 1000000000)
+        )
+        planet.save()
+        planet_objects.append(planet)
+
+    print("Creating characters...")
+    for _ in range(50):
+        character = Character(
+            name=fake.name(),
+            species=random.choice(species),
+            birth_year=f"{random.choice(['BBY', 'ABY'])} {random.randint(1, 1000)}",
+            planet_id=random.choice(planet_objects).id
+        )
+        character.save()
+
+    print("Seeding complete!")

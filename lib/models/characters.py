@@ -1,4 +1,5 @@
-from .base import Base, CURSOR, CONN
+from . import CONN, CURSOR
+from .base import Base
 
 class Character(Base):
     table_name = "characters"
@@ -34,20 +35,19 @@ class Character(Base):
         CONN.commit()
         self.id = CURSOR.lastrowid
 
-
     @classmethod
     def get_all(cls):
         sql = "SELECT * FROM characters"
         CURSOR.execute(sql)
         return [cls(*row) for row in CURSOR.fetchall()]
-    
+
     @classmethod
     def find_by_id(cls, id):
         sql = "SELECT * FROM characters WHERE id = ?"
         CURSOR.execute(sql, (id,))
         row = CURSOR.fetchone()
         return cls(*row) if row else None
-    
+
     def delete(self):
         sql = "DELETE FROM characters WHERE id = ?"
         CURSOR.execute(sql, (self.id,))
