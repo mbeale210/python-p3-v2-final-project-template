@@ -1,6 +1,6 @@
 from .base import Base, CONN, CURSOR
 from .planet import Planet
-from lib.debug import debug
+
 
 class Character(Base):
     table_name = "characters"

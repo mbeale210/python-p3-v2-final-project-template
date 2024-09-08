@@ -1,5 +1,5 @@
 from .base import Base, CURSOR, CONN
-from lib.debug import debug
+
 
 class Planet(Base):
     table_name = "planets"
