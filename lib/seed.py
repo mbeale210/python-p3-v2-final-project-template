@@ -29,7 +29,7 @@ if __name__ == "__main__":
             name=planet_name,
             climate=fake.word(),
             terrain=fake.word(),
-            population=random.randint(1000, 1000000000)
+            population=random.randint(100000, 100000000000)
         )
         planet.save()
         planet_objects.append(planet)
