@@ -1,4 +1,5 @@
 import sqlite3
+from lib.debug import debug
 
 CONN = sqlite3.connect('star_wars.db')
 CURSOR = CONN.cursor()

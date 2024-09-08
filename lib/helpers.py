@@ -1,5 +1,6 @@
 from models.character import Character
 from models.planet import Planet
+from debug import debug
 
 def exit_program():
     print("May the Force be with you!")

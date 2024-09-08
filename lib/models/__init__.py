@@ -1,4 +1,6 @@
 # lib/models/__init__.py
+
+from lib.debug import debug
 import sqlite3
 from .character import Character
 from .planet import Planet
