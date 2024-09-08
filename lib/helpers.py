@@ -11,7 +11,8 @@ def display_all_characters():
     characters = Character.get_all()
     for character in characters:
         planet = Planet.find_by_id(character.planet_id)
-        print(f"{character.name} - Species: {character.species}, Planet: {planet.name}")
+        planet_name = planet.name if planet else "Unknown"
+        print(f"{character.name} - Species: {character.species}, Planet: {planet_name}")
 
 def add_delete_character():
     print("\n1. Add Character")
@@ -67,7 +68,8 @@ def move_character():
     characters = Character.get_all()
     for character in characters:
         planet = Planet.find_by_id(character.planet_id)
-        print(f"{character.id}. {character.name} - Current planet: {planet.name}")
+        planet_name = planet.name if planet else "Unknown"
+        print(f"{character.id}. {character.name} - Current planet: {planet_name}")
     character_id = int(input("Enter character ID to move: "))
     character = Character.find_by_id(character_id)
     if character:
