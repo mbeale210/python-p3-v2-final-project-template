@@ -23,8 +23,8 @@ def main():
 
 def main_menu():
     print("\nMain Menu:")
-    print("1. Display all characters")
-    print("2. Add/Delete character")
+    print("1. Let's find some Heroes")
+    print("2. Add/Delete Hero")
     print("3. Exit program")
 
 def characters_menu():

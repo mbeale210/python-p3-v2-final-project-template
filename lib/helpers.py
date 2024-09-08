@@ -1,5 +1,3 @@
-# lib/helpers.py
-
 from models.character import Character
 from models.planet import Planet
 
@@ -10,7 +8,7 @@ def exit_program():
 def display_all_characters():
     characters = Character.get_all()
     for character in characters:
-        planet = Planet.find_by_id(character.planet_id)
+        planet = character.planet
         planet_name = planet.name if planet else "Unknown"
         print(f"{character.id}. {character.name} - Species: {character.species}, Planet: {planet_name}")
 
@@ -65,7 +63,7 @@ def display_planet_details():
 def move_character():
     characters = Character.get_all()
     for character in characters:
-        planet = Planet.find_by_id(character.planet_id)
+        planet = character.planet
         planet_name = planet.name if planet else "Unknown"
         print(f"{character.id}. {character.name} - Current planet: {planet_name}")
     character_id = int(input("Enter character ID to move: "))

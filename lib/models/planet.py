@@ -11,15 +11,6 @@ class Planet(Base):
         self.population = population
 
     @classmethod
-    def find_by_id(cls, id):
-        sql = "SELECT * FROM planets WHERE id = ?"
-        CURSOR.execute(sql, (id,))
-        row = CURSOR.fetchone()
-        if row:
-            return cls(*row)
-        return None
-
-    @classmethod
     def create_table(cls):
         sql = """
             CREATE TABLE IF NOT EXISTS planets (
@@ -34,26 +25,35 @@ class Planet(Base):
         CONN.commit()
 
     def save(self):
-        sql = """
-            INSERT INTO planets (name, climate, terrain, population)
-            VALUES (?, ?, ?, ?)
-        """
-        CURSOR.execute(sql, (self.name, self.climate, self.terrain, self.population))
-        CONN.commit()
-        self.id = CURSOR.lastrowid
+        if self.id is None:
+            sql = """
+                INSERT INTO planets (name, climate, terrain, population)
+                VALUES (?, ?, ?, ?)
+            """
+            CURSOR.execute(sql, (self.name, self.climate, self.terrain, self.population))
+            CONN.commit()
+            self.id = CURSOR.lastrowid
+        else:
+            sql = """
+                UPDATE planets
+                SET name = ?, climate = ?, terrain = ?, population = ?
+                WHERE id = ?
+            """
+            CURSOR.execute(sql, (self.name, self.climate, self.terrain, self.population, self.id))
+            CONN.commit()
 
     @classmethod
     def get_all(cls):
         sql = "SELECT * FROM planets"
         CURSOR.execute(sql)
-        return [cls(*row) for row in CURSOR.fetchall()]
+        return [cls(row[1], row[2], row[3], row[4], row[0]) for row in CURSOR.fetchall()]
 
     @classmethod
     def find_by_id(cls, id):
         sql = "SELECT * FROM planets WHERE id = ?"
         CURSOR.execute(sql, (id,))
         row = CURSOR.fetchone()
-        return cls(*row) if row else None
+        return cls(row[1], row[2], row[3], row[4], row[0]) if row else None
 
     def delete(self):
         sql = "DELETE FROM planets WHERE id = ?"
