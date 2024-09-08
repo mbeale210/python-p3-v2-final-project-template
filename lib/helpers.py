@@ -17,8 +17,8 @@ def display_all_characters():
         print(f"{character.name} - Species: {character.species}, Planet: {planet.name}")
 
 def add_delete_character():
-    print("\n1. Add Character")
-    print("2. Delete Character")
+    print("\n1. Add Hero")
+    print("2. Delete Hero")
     choice = input("Enter your choice: ")
 
     if choice == "1":
