@@ -17,8 +17,8 @@ def display_all_characters():
         print(f"{character.name} - Species: {character.species}, Planet: {planet.name}")
 
 def add_delete_character():
-    print("\n1. Add Hero")
-    print("2. Delete Hero")
+    print("\n1. Add Character")
+    print("2. Delete Character")
     choice = input("Enter your choice: ")
 
     if choice == "1":
@@ -37,16 +37,38 @@ def add_delete_character():
         characters = Character.get_all()
         for character in characters:
             print(f"{character.id}. {character.name}")
-        character_id = int(input("Enter character ID to delete: "))
+        character_id = int(input("Enter Hero ID to delete: "))
         character = Character.find_by_id(character_id)
         if character:
             character.delete()
             print("Your hero has become one with the Force!")
         else:
-            print("Hero is nowhere in the galaxy.")    
+            print("Hero is nowhere in the galaxy.")
+    else:
+        print("I hate to say it but the hero you're looking for doesn't seem to exist")
+        print("If an item doesn't appear in our records,")
+        print("It does not exist.")   
 
 def display_planet_details():
-    print()
+    planets = Planet.get_all()
+    for planet in planets:
+        print(f"{planet.id}. {planet.name}")
+    planet_id = int(input("Enter planet ID: "))
+    planet = Planet.find_by_id(planet_id)
+    if planet:
+        print(f"\nPlanet: {planet.name}")
+        print(f"Climate: {planet.climate}")
+        print(f"Terrain: {planet.terrain}")
+        print(f"Population: {planet.population}")
+        characters = Character.get_all()
+        planet_characters = [c for c in characters if c.planet_id == planet.id]
+        print("\nCharacters on this planet:")
+        for character in planet_characters:
+            print(f"- {character.name} ({character.species})")
+    else:
+        print("I hate to say it but the system you're looking for doesn't seem to exist")
+        print("If an item doesn't appear in our records,")
+        print("It does not exist.")
 
 def move_character():
     print()
