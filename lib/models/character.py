@@ -1,5 +1,4 @@
-from . import CONN, CURSOR
-from .base import Base
+from .base import Base, CURSOR, CONN
 
 class Character(Base):
     table_name = "characters"

@@ -6,7 +6,9 @@ name = "pypi"
 [packages]
 ipdb = "*"
 faker = "*"
+sqlalchemy = "*"
 pytest = "7.1.3"
+
 
 [dev-packages]
 

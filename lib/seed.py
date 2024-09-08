@@ -1,6 +1,7 @@
 import random
 from faker import Faker
-from models import Character, Planet
+from models.character import Character
+from models.planet import Planet
 
 if __name__ == "__main__":
     print("Resetting tables...")
