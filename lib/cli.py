@@ -102,7 +102,35 @@ def characters_menu():
         elif choice == "3":
             break
         else:
-            print("Invalid choice. I find your lack of faith disturbing.")
+            print("""
+                       .-.
+                      |_:_|
+                     /(_Y_)\.
+.                   ( \/M\/ )      I find your lack of faith disturbing.
+ '.               _.'-/'-'\-'._
+   ':           _/.--'[[[[]'--.\_
+     ':        /_'  : |::"| :  '.\.
+       ':     //   ./ |oUU| \.'  :\.
+         ':  _:'..' \_|___|_/ :   :|
+           ':.  .'  |_[___]_|  :.':\.
+            [::\ |  :  | |  :   ; : \.
+             '-'   \/'.| |.' \  .;.' |
+             |\_    \  '-'   :       |
+             |  \    \ .:    :   |   |
+             |   \    | '.   :    \  |
+             /       \   :. .;       |
+            /     |   |  :__/     :   \.
+           |  |   |    \:   | \   |   ||
+          /    \  : :  |:   /  |__|   /|
+          |     : : :_/_|  /'._\  '--|_\.
+          /___.-/_|-'   \  \.
+                         '-'
+                  
+                  Invalid choice. 
+
+                  Art by Shanaka Dias
+                  """)
+
 
 if __name__ == "__main__":
     main()
