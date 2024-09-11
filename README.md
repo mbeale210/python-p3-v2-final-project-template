@@ -103,4 +103,7 @@ ASCII art thanks to:
     ├── debug.py
     ├── helpers.py
     └── seed.py
-```
+
+## The Entire Star Wars Movie in ASCII art
+
+https://www.asciimation.co.nz/

@@ -219,6 +219,26 @@ def display_planet_details():
         print("\nCharacters on this planet:")
         for character in planet_characters:
             print(f"- {character.name} ({character.species})")
+    
+        while True:
+            print("\nPlanet Submenu:")
+            print("1. Return to Character Menu")
+            print("2. Delete this Planet")
+            choice = input("Enter your choice: ")
+            
+            if choice == "1":
+                break
+            elif choice == "2":
+                confirm = input(f"Are you sure you want to delete {planet.name}? (y/n): ")
+                if confirm.lower() == 'y':
+                    planet.delete()
+                    print(f"{planet.name} has been deleted.")
+                    break
+                else:
+                    print("Deletion cancelled.")
+            else:
+                print("Invalid choice. Please try again.")
+    
     else:
         print("""
                             %%%                                
