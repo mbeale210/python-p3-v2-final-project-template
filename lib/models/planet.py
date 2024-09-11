@@ -57,6 +57,8 @@ class Planet(Base):
         return cls(row[1], row[2], row[3], row[4], row[0]) if row else None
 
     def delete(self):
+        sql_delete_characters = "DELETE FROM characters WHERE planet_id = ?"
+        CURSOR.execute(sql_delete_characters, (self.id,))
         sql = "DELETE FROM planets WHERE id = ?"
         CURSOR.execute(sql, (self.id,))
         CONN.commit()

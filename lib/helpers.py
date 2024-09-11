@@ -266,6 +266,8 @@ def display_planet_details():
                 confirm = input(f"""No! {planet.name} is peaceful! We have no weapons, you can't possibly... 
                     Are you sure you want to unleash the force of the DeathStar? (y/n): """)
                 if confirm.lower() == 'y':
+                    characters = Character.get_all()
+                    planet_characters = [c for c in characters if c.planet_id == planet.id]
                     planet.delete()
                     print("""
                   ⠀⠀⣀⣀⠀⢤⡤⡤⢤⢤⢤⠤⠄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -296,6 +298,8 @@ def display_planet_details():
                     """)
                     print(f"I'm afraid {planet.name} has felt the force")
                     print("of this fully operational weapon.")
+                    for character in planet_characters:
+                        print(f"- {character.name} has become one with the force.")
                     break
                 else:
                     print("""
